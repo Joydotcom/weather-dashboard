@@ -8,3 +8,5 @@ event.preventDefault()
 var searchterm = searchTermEl.val();
 var longitude = "";
 var latitude = "";
+
+var apiKey = "6ac8192d5fafbf69b00f77373239cae0"
