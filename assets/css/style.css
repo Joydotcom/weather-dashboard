@@ -5,6 +5,8 @@ h1 {
     font-size:xx-large;
 }
 
-header {
-    
+.weathernum {
+    font-size: xx-large;
+    font-style: italic;
+    font-family: cursive;
 }
