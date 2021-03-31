@@ -3,11 +3,12 @@ var searchTermEl = $("#search-term");
 var apiKey = "6ac8192d5fafbf69b00f77373239cae0";
 var dateTime = moment().format("MM/DD/YYYY");
 
+var iconcode = "http://api.openweathermap.org/data/2.5/forecast?q=.weather[0].icon";
+
 searchForm.on("submit", function (event) {
   event.preventDefault();
 
-  // add item to history on left side of page
-  // update localstorage with city.
+  
   var searchTerm = searchTermEl.val();
 
   var queryUrl =
@@ -25,28 +26,36 @@ searchForm.on("submit", function (event) {
       console.log(data.main.temp);
       console.log(data.main.humidity);
       // add weather to the DOM (1)
-      getforecast(searchTerm);
-      getUV(data.coord.lat, data.coord.lon)
+      getForecast(searchTerm);
+      getUV(data.coord.lat, data.coord.lon);
+
     });
 });
 
-function getforecast(searchTerm){
+var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+
+function getForecast(searchTerm){
 fetch("http://api.openweathermap.org/data/2.5/forecast?q="+searchTerm+"&appid="+apiKey+"&units=imperial")
 .then(function (response) {
     return response.json();
     })
   .then(function (data) {
       console.log(data);
+    
+$('#day1-icon').empty;
+$('#day1-icon').append(data.list[0].weather.icon);
+
+
 $('#day1-date').empty;
 $('#day1-date').append(moment().format("MM/DD/YYYY"));
 $('#day2-date').empty;
-$('#day2-date').append(moment().add(1, 'days').calendar());
+$('#day2-date').append(moment().add(1, 'days').format("MM/DD/YYYY"));
 $('#day3-date').empty;
-$('#day3-date').append(moment().add(2, 'days').calendar());
+$('#day3-date').append(moment().add(2, 'days').format("MM/DD/YYYY"));
 $('#day4-date').empty;
-$('#day4-date').append(moment().add(3, 'days').calendar());
+$('#day4-date').append(moment().add(3, 'days').format("MM/DD/YYYY"));
 $('#day5-date').empty;
-$('#day5-date').append(moment().add(4, 'days').calendar());
+$('#day5-date').append(moment().add(4, 'days').format("MM/DD/YYYY"));
 
 // $('#day1-date').empty;
 // $('#day1-date').append(data.list[0].main.temp);
@@ -60,6 +69,7 @@ $('#day4-humidity').empty;
 $('#day4-humidity').append(data.list[3].main.humidity);
 $('#day5-humidity').empty;
 $('#day5-humidity').append(data.list[4].main.humidity);
+
 
 $('#day1-wind').empty;
 $('#day1-wind').append(data.list[0].wind.speed);
