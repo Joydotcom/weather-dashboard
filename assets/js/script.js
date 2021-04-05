@@ -3,7 +3,7 @@ var searchTermEl = $("#search-term");
 var apiKey = "6ac8192d5fafbf69b00f77373239cae0";
 var dateTime = moment().format("MM/DD/YYYY");
 
-var iconcode = "http://api.openweathermap.org/data/2.5/forecast?q=.weather[0].icon";
+var iconcode = "https://api.openweathermap.org/data/2.5/forecast?q=.weather[0].icon";
 
 searchForm.on("submit", function (event) {
   event.preventDefault();
@@ -32,10 +32,10 @@ searchForm.on("submit", function (event) {
     });
 });
 
-var iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
+var iconurl = "https://openweathermap.org/img/w/" + iconcode + ".png";
 
 function getForecast(searchTerm){
-fetch("http://api.openweathermap.org/data/2.5/forecast?q="+searchTerm+"&appid="+apiKey+"&units=imperial")
+fetch("https://api.openweathermap.org/data/2.5/forecast?q="+searchTerm+"&appid="+apiKey+"&units=imperial")
 .then(function (response) {
     return response.json();
     })
@@ -100,10 +100,10 @@ $('#day5-fcast').append(data.list[4].main.temp);
 }
 
 function getUV(lat, lon) {
-//http://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
+// https://api.openweathermap.org/data/2.5/uvi?lat={lat}&lon={lon}&appid={API key}
 console.log(lat+" "+lon);
 
-fetch("http://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&appid="+apiKey)
+fetch("https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&appid="+apiKey)
 .then(function (response) {
     return response.json();
   })
