@@ -4,8 +4,17 @@ window.addEventListener("load", function() {
     if (!JSON.parse(localStorage.getItem("history"))) {
 
         localStorageHistory = []; 
+    } else {
+        localStorageHistory = JSON.parse(localStorage.getItem("history"));
     }
 
-
-
 })
+
+var historyItems = [];
+
+function getForecast(searchValue) {
+    if (!searchValue) {
+        return;
+    }
+
+}
