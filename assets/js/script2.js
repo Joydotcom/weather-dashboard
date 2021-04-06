@@ -59,8 +59,10 @@ function getForecast(searchTerm) {
 
       for (var i = 0; i < data.list.length; i++) {
         if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
-          var cardCol = document.createElement("div");
-          cardCol.classList.add("col-md-2");
+        }
+          
+        var cardCol = document.createElement("div");
+          cardCol.classList.add("col-md-3");
           var cardEl = document.createElement("div");
           cardEl.classList.add("card", "text-white", "bg-primary");
           var windSpeedEl = document.createElement("p");
@@ -80,19 +82,16 @@ function getForecast(searchTerm) {
             "https://openweathermap.org/img/w/" +
               data.list[i].weather[0].icon +
               ".png"
-              
-          );
+              );    
+        
           var p1El = document.createElement("p");
           p1El.classList.add("card-text");
-          p1El.textContent = "Temp: " + data.list[i].main.temp.max + "F";
+          p1El.textContent = "Temp: " + data.list[i].main.temp + "F";
 
           var p2El = document.createElement("p");
           p2El.classList.add("card-text");
           p2El.textContent = "Humidity: " + data.list[i].main.humidity + "%";
-        }
-      }
-    });
-}
+
 cardCol.appendChild(cardEl); 
 bodyEl.appendChild(titleEl);
 bodyEl.appendChild(iconEl);
@@ -102,5 +101,24 @@ bodyEl.appendChild(p1El);
 bodyEl.appendChild(p2El);
 cardEl.appendChild(bodyEl);
 forecastEl.appendChild(cardCol);
+
+        }
+      })
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+// var mySection = document.getElementById("mySection")
+// var myVar = mySection.appendChild(<all the sections you want to add here>)
 
 
