@@ -2,8 +2,7 @@ window.addEventListener("load", function() {
 
     var localStorageHistory;
     if (!JSON.parse(localStorage.getItem("history"))) {
-
-        localStorageHistory = []; 
+   localStorageHistory = []; 
     } else {
         localStorageHistory = JSON.parse(localStorage.getItem("history"));
     }
@@ -13,15 +12,31 @@ window.addEventListener("load", function() {
 var apiKey = "6ac8192d5fafbf69b00f77373239cae0";
 var historyItems = [];
 
-function getForecast(searchTerm) {
-    if (!searchTerm) {
-        return;
-    }
-}
+var searchForm = $("#search-form");
 
-var queryUrl =
-"https://api.openweathermap.org/data/2.5/weather?q=" +
-searchTerm +
-"&appid=" +
-apiKey +"&units=imperial";
+searchForm.on("submit", function (event) {
+    event.preventDefault();
+  
+    
+    var searchTerm = searchTermEl.val();
+  
+    var queryUrl =
+      "https://api.openweathermap.org/data/2.5/weather?q=" +
+      searchTerm +
+      "&appid=" +
+      apiKey +"&units=imperial";
+  
+    fetch(queryUrl)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+       
+        getForecast(searchTerm);
+        getUV(data.coord.lat, data.coord.lon);
+  
+      });
+  });
+
+
 
