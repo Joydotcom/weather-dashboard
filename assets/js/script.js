@@ -7,7 +7,7 @@ var iconcode = "https://api.openweathermap.org/data/2.5/forecast?q=.weather[0].i
 
 searchForm.on("submit", function (event) {
   event.preventDefault();
-
+  for (var i = 0; i < 5; i++) {
   
   var searchTerm = searchTermEl.val();
 
@@ -122,7 +122,65 @@ fetch("https://api.openweathermap.org/data/2.5/uvi?lat="+lat+"&lon="+lon+"&appid
 // load forecast info
 
 
+<!--     
+            <div class="container-fluid">
+              <div class="row"> -->
+                <!-- <aside class="col-lg-3 bg-light"> -->
+                  <!-- <h5 class="mt-1">Search for a City:</h5>
+                  <div class="form-inline form-group">
+                    <input class="form-control" type="text" id="search-value" />
+                    <button class="btn btn-primary" id="search-button">
+                      <i class="fa fa-search">Search</i>
+                    </button> -->
+                    
+                    </div>
 
-
-
+                    <!-- <section>  -->
+        <!-- <h2 class="display-6 text-center">5 Day Forecast</h2>
+<div id= "forecast" class = "container row justify-content-center">
+<div class="col-2 text-center my-auto">
+    <div class="card card-block"  id ="fcast"> 
+        <p  id ="day1-date" class="card-text"></p>
+        <p id="day1-icon"><img id="wicon1" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"></p>
+        <p id="day1-fcast" class="weathernum"><span>Temp: </span></p>
+        <p  id ="day1-humidity" class="card-text">Humidity:</p>
+        <p  id ="day1-wind" class="card-text">Wind Speed: </p>
+    </div>
+</div>
+<div class="col-2 text-center my-auto">
+            <div class="card card-block"  id ="fcast">
+              <p  id ="day2-date" class="card-text"></p>
+              <p id="day2-icon"><img id="wicon1" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"></p>
+              <p id="day2-fcast" class="weathernum"><span>Temp: </span></p>
+              <p  id ="day2-humidity" class="card-text">Humidity: </p>
+              <p  id ="day2-wind" class="card-text">Wind Speed: </p>
+            </div>
+        </div>
+        <div class="col-2 text-center my-auto">
+            <div class="card card-block"  id ="fcast">
+              <p  id ="day3-date" class="card-text"></p>
+              <p id="day3-icon"><img id="wicon1" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"></p>
+              <p id="day3-fcast" class="weathernum"><span>Temp: </span></p>
+              <p  id ="day3-humidity" class="card-text">Humidity: </p>
+              <p  id ="day3-wind" class="card-text">Wind Speed: </p>
+            </div>
+        </div>
+        <div class="col-2 text-center my-auto">
+            <div class="card card-block"  id ="fcast">
+              <p  id ="day4-date" class="card-text"></p>
+              <p id="day4-icon"><img id="wicon1" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"></p>
+              <p id="day4-fcast" class="weathernum"><span>Temp: </span></p>
+              <p  id ="day4-humidity" class="card-text">Humidity: </p>
+              <p  id ="day4-wind" class="card-text">Wind Speed: </p>
+            </div>
+        </div>
+        <div class="col-2 text-center my-auto">
+            <div class="card card-block"  id ="fcast">
+              <p  id ="day5-date" class="card-text"></p>
+              <p id="day5-icon"><img id="wicon1" src="http://openweathermap.org/img/w/04d.png" alt="Weather icon"></p>
+              <p id="day5-fcast" class="weathernum"><span>Temp: </span></p>
+              <p  id ="day5-humidity" class="card-text">Humidity: </p>
+              <p  id ="day5-wind" class="card-text">Wind Speed: </p>
+            </div>
+        </div> -->
         

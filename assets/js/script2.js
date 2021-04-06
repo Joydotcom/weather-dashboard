@@ -16,6 +16,8 @@ searchForm.on("submit", function (event) {
   event.preventDefault();
 
   var searchTerm = searchTermEl.val();
+cardCol.innerHTML = "";
+// bodyEl.innerHTML = "";
 
   var queryUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -35,13 +37,9 @@ searchForm.on("submit", function (event) {
 });
 
 var forecastEl = document.querySelector("#forecast");
-
-// forecastEl.innerHTML = "<h4>";
-
+forecastEl.innerHTML = "<h4>";
 forecastRowEl = document.createElement("div");
 forecastRowEl.className = '"row"';
-
-// console.log(data.list.length);
 
 function getForecast(searchTerm) {
   fetch(
@@ -55,70 +53,55 @@ function getForecast(searchTerm) {
       return response.json();
     })
     .then(function (data) {
-        console.log(data);
+      console.log(data);
 
-      for (var i = 0; i < data.list.length; i++) {
+      for (var i = 0; i < 5; i++) {
         if (data.list[i].dt_txt.indexOf("15:00:00") !== -1) {
         }
-          
+
         var cardCol = document.createElement("div");
-          cardCol.classList.add("col-md-3");
-          var cardEl = document.createElement("div");
-          cardEl.classList.add("card", "text-white", "bg-primary");
-          var windSpeedEl = document.createElement("p");
-          windSpeedEl.classList.add("card-text");
-          var humEl = document.createElement("p");
-          humEl.classList.add("card-text");
-          var bodyEl = document.createElement("div");
-          bodyEl.classList.add("card-body", "p-2");
-          var titleEl = document.createElement("h5");
-          titleEl.classList.add("card-title");
-          titleEl.textContent = new Date(
-            data.list[i].dt.txt
-          ).toLocaleDateString();
-          var iconEl = document.createElement("img");
-          iconEl.setAttribute(
-            "src",
-            "https://openweathermap.org/img/w/" +
-              data.list[i].weather[0].icon +
-              ".png"
-              );    
-        
-          var p1El = document.createElement("p");
-          p1El.classList.add("card-text");
-          p1El.textContent = "Temp: " + data.list[i].main.temp + "F";
+        cardCol.classList.add("col-md-2");
+        var cardEl = document.createElement("div");
+        cardEl.classList.add("card", "text-white", "bg-primary");
+        var windSpeedEl = document.createElement("p");
+        windSpeedEl.classList.add("card-text");
+        var humEl = document.createElement("p");
+        humEl.classList.add("card-text");
+        var bodyEl = document.createElement("div");
+        bodyEl.classList.add("card-body", "p-1");
+        var titleEl = document.createElement("h5");
+        titleEl.classList.add("card-title");
+        titleEl.textContent = new Date(
+          data.list[i].dt_txt
+        ).toLocaleDateString();
+        var iconEl = document.createElement("img");
+        iconEl.setAttribute(
+          "src",
+          "https://openweathermap.org/img/w/" +
+            data.list[i].weather[0].icon +
+            ".png"
+        );
 
-          var p2El = document.createElement("p");
-          p2El.classList.add("card-text");
-          p2El.textContent = "Humidity: " + data.list[i].main.humidity + "%";
+        var p1El = document.createElement("p");
+        p1El.classList.add("card-text");
+        p1El.textContent = "Temp: " + data.list[i].main.temp + "F";
 
-cardCol.appendChild(cardEl); 
-bodyEl.appendChild(titleEl);
-bodyEl.appendChild(iconEl);
-bodyEl.appendChild(windSpeedEl);
-bodyEl.appendChild(humEl);
-bodyEl.appendChild(p1El);
-bodyEl.appendChild(p2El);
-cardEl.appendChild(bodyEl);
-forecastEl.appendChild(cardCol);
+        var p2El = document.createElement("p");
+        p2El.classList.add("card-text");
+        p2El.textContent = "Humidity: " + data.list[i].main.humidity + "%";
 
-        }
-      })
-    };
-
-
-
-
-
-
-
-
-
-
-
-
+        cardCol.appendChild(cardEl);
+        bodyEl.appendChild(titleEl);
+        bodyEl.appendChild(iconEl);
+        bodyEl.appendChild(windSpeedEl);
+        bodyEl.appendChild(humEl);
+        bodyEl.appendChild(p1El);
+        bodyEl.appendChild(p2El);
+        cardEl.appendChild(bodyEl);
+        forecastEl.appendChild(cardCol);
+      }
+    });
+}
 
 // var mySection = document.getElementById("mySection")
 // var myVar = mySection.appendChild(<all the sections you want to add here>)
-
-
