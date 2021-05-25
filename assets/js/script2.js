@@ -16,8 +16,8 @@ searchForm.on("submit", function (event) {
   event.preventDefault();
 
   var searchTerm = searchTermEl.val();
-cardCol.innerHTML = "";
-// bodyEl.innerHTML = "";
+  document.querySelector("#forecast").innerHTML = "";
+
 
   var queryUrl =
     "https://api.openweathermap.org/data/2.5/weather?q=" +
@@ -74,6 +74,7 @@ function getForecast(searchTerm) {
         titleEl.textContent = new Date(
           data.list[i].dt_txt
         ).toLocaleDateString();
+        console.log(data.list[i].dt_txt);
         var iconEl = document.createElement("img");
         iconEl.setAttribute(
           "src",
